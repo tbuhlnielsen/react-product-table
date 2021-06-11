@@ -1,39 +1,31 @@
-import React from "react";
+const SearchBar = (props) => {
 
-class SearchBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
-    this.handleInStockOnlyChange = this.handleInStockOnlyChange.bind(this);
+  const handleFilterTextChange = (event) => {
+    props.onFilterTextChange(event.target.value);
   }
 
-  handleFilterTextChange(event) {
-    this.props.onFilterTextChange(event.target.value);
+  const handleInStockOnlyChange = (event) => {
+    props.onInStockOnlyChange(event.target.checked);
   }
 
-  handleInStockOnlyChange(event) {
-    this.props.onInStockOnlyChange(event.target.checked);
-  }
+  const filterText = props.filterText;
+  const inStockOnly = props.inStockOnly;
 
-  render() {
-    const filterText = this.props.filterText;
-    const inStockOnly = this.props.inStockOnly;
-    return (
-      <form>
-        <input
-          type="text"
-          placeholder="Search..."
-          value={filterText}
-          onChange={this.handleFilterTextChange}/>
-        <input
-          name="stockFilter"
-          type="checkbox"
-          checked={inStockOnly}
-          onChange={this.handleInStockOnlyChange}/>
-        <label htmlFor="stockFilter">Only show products in stock</label>
-      </form>
-    );
-  }
+  return (
+    <form>
+      <input
+        type="text"
+        placeholder="Search..."
+        value={filterText}
+        onChange={handleFilterTextChange}/>
+      <input
+        name="stockFilter"
+        type="checkbox"
+        checked={inStockOnly}
+        onChange={handleInStockOnlyChange}/>
+      <label htmlFor="stockFilter">Only show products in stock</label>
+    </form>
+  );
 }
 
 export default SearchBar;

@@ -1,27 +1,43 @@
 import ProductCategoryRow from "./ProductCategoryRow";
 import ProductRow from "./ProductRow";
 
-function ProductTable(props) {
+// Returns an Array containing only the distinct entries of `array`.
+const distinct = (array) => {
+  return [...new Set(array)];
+}
 
-  let categories = [
-    ...new Set(props.products.map(product => product.category))
-  ];
+const ProductTable = (props) => {
 
+  const products = props.products;
+
+  // Filter the products by the user input.
+  const filteredProducts = products.filter(product => {
+    if (!product.name.includes(props.filterText)) {
+      return false;
+    }
+    if (props.inStockOnly && !product.stocked) {
+      return false;
+    }
+    return true;
+  });
+
+  const categories = distinct(filteredProducts.map(p => p.category));
+
+  // Create the rows to go in the product table.
   const rows = [];
-  for (let cat of categories) {
-    const filteredProducts = props.products.filter(product =>
-      product.category === cat
-      && product.name.includes(props.filterText)
-      && (product.stocked || !props.inStockOnly)
+  for (let category of categories) {
+    // Group products by category.
+    const productsInCategory = filteredProducts.filter(product =>
+      product.category === category
     );
-    if (filteredProducts.length > 0) {
+    if (productsInCategory.length > 0) {
       rows.push(
         <ProductCategoryRow
-          key={cat}
-          category={cat} />
+          key={category}
+          category={category} />
       );
     }
-    for (let product of filteredProducts) {
+    for (let product of productsInCategory) {
       rows.push(
         <ProductRow
           key={product.name}

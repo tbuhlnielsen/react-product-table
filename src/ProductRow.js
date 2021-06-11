@@ -1,4 +1,4 @@
-function ProductRow(props) {
+const ProductRow = (props) => {
   return (
     <tr>
       <td>{props.name}</td>

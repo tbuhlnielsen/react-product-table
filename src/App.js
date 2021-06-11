@@ -1,6 +1,6 @@
 import FilterableProductTable from "./FilterableProductTable";
 
-function App(props) {
+const App = (props) => {
   return (
     <FilterableProductTable products={props.products} />
   );
