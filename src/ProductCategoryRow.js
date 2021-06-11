@@ -1,6 +1,8 @@
 function ProductCategoryRow(props) {
   return (
-    <p>Product Category Row</p>
+    <tr>
+      <th colSpan={2}>{props.category}</th>
+    </tr>
   );
 }
 

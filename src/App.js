@@ -2,7 +2,7 @@ import FilterableProductTable from "./FilterableProductTable";
 
 function App(props) {
   return (
-    <FilterableProductTable />
+    <FilterableProductTable products={props.products} />
   );
 }
 

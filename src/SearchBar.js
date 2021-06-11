@@ -1,6 +1,10 @@
 function SearchBar(props) {
   return (
-    <h1>Search Bar</h1>
+    <form>
+      <input type="text" placeholder="Search..." />
+      <input name="stockFilter" type="checkbox" />
+      <label htmlFor="stockFilter">Only show products in stock</label>
+    </form>
   );
 }
 

@@ -1,6 +1,9 @@
 function ProductRow(props) {
   return (
-    <p>Product Row</p>
+    <tr>
+      <td>{props.name}</td>
+      <td>{props.price}</td>
+    </tr>
   );
 }
 

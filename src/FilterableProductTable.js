@@ -5,7 +5,7 @@ function FilterableProductTable(props) {
   return (
     <div>
       <SearchBar />
-      <ProductTable />
+      <ProductTable products={props.products} />
     </div>
   );
 }

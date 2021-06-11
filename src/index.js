@@ -2,12 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
-
-var productData = [
+let productData = [
   {
     category: "Sporting goods",
     price: "$49.99",
@@ -45,3 +40,8 @@ var productData = [
     name: "Nexus 7"
   }
 ];
+
+ReactDOM.render(
+  <App products={productData} />,
+  document.getElementById('root')
+);
