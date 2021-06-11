@@ -1,6 +1,8 @@
-function App() {
+import FilterableProductTable from "./FilterableProductTable";
+
+function App(props) {
   return (
-    <h1>Hello, world!</h1>
+    <FilterableProductTable />
   );
 }
 
