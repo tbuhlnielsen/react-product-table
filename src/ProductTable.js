@@ -9,13 +9,19 @@ function ProductTable(props) {
 
   const rows = [];
   for (let cat of categories) {
-    rows.push(
-      <ProductCategoryRow
-        key={cat}
-        category={cat} />
+    const filteredProducts = props.products.filter(product =>
+      product.category === cat
+      && product.name.includes(props.filterText)
+      && (product.stocked || !props.inStockOnly)
     );
-    const products = props.products.filter(product => product.category === cat)
-    for (let product of products) {
+    if (filteredProducts.length > 0) {
+      rows.push(
+        <ProductCategoryRow
+          key={cat}
+          category={cat} />
+      );
+    }
+    for (let product of filteredProducts) {
       rows.push(
         <ProductRow
           key={product.name}
